@@ -47,6 +47,14 @@ def response_json_at_path_is_not_equal_to(response, json_path, value):
     [assert_that(actual_value).is_not_equal_to(eval(value)) for actual_value in values]
 
 
+def response_json_at_path_matches(response, json_path, regex):
+    """
+    Validates that value at a json path matches a regex
+    """
+    values = _get_values(response.json(), json_path)
+    [assert_that(actual_value).matches(eval(regex)) for actual_value in values]
+
+
 def response_json_at_path_starts_with(response, json_path, value):
     """
     """

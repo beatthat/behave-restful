@@ -29,6 +29,9 @@ def step_impl(context, json_path, value_str):
 def step_impl(context, json_path, value_str):
     _invoke_match(_validate.response_json_at_path_is_not_equal_to, context, json_path, value_str)
 
+@then('the response json at {json_path} matches {regex_str}')
+def step_impl(context, json_path, regex_str):
+    _invoke_match(_validate.response_json_at_path_matches, context, json_path, regex_str)
 
 @then('the response json at {json_path} starts with {value_str}')
 def step_impl(context, json_path, value_str):
